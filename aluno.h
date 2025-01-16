@@ -1,48 +1,22 @@
 #include <string>
+#include "pessoa.h"
 using namespace std;
 
+#ifndef PROJETOEDO_ALUNO_H
+#define PROJETOEDO_ALUNO_H
 
-#ifndef ALUNO_H
-#define ALUNO_H
-
-class Aluno {
+// Pra matriculas e pra notas, vai precisar de um setMatricula
+class Aluno : public Pessoa {
 private:
-    string nome;
-    int idade;
-    double nota;
-    string turma;
+    int matricula;
+    double notas;
+
 public:
-    // esqueci do construtorrr aaaa
-    Aluno(const string& novoNome = "", int novaIdade = 0,const string& novaTurma = "")
-            :nome(novoNome), idade(novaIdade), turma(novaTurma){}
+    Aluno(const string& novoNome = "", int novaIdade = 0 , int novaMatricula = 0000, double novasNotas = 0.0)
+    : Pessoa(novoNome, novaIdade), matricula(novaMatricula), notas(novasNotas) {}
 
 
-    void setNome(const string &novoNome){
-        nome = novoNome;
-    }
-    string getNome()const{
-        return nome;
-    }
 
-    void setIdade(const int &novaIdade){
-        idade = novaIdade;
-    }
-    int getIdade()const{
-        return idade;
-    }
-
-    void setTurma(const string &novaTurma){
-        turma = novaTurma;
-    }
-    string getTurma()const{
-        return turma;
-    }
-
-    void setNota(double &novaNota){
-        nota = novaNota;
-    }
-    double getNota()const{
-        return nota;
-    }
 };
-#endif
+
+#endif //PROJETOEDO_ALUNO_H

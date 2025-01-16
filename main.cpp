@@ -1,17 +1,20 @@
 #include <iostream>
 #include <string>
-#include "professor.h"
+#include "pessoa.h"
 #include "aluno.h"
 using namespace std;
 
 
 int main() {
-    Aluno aluno1("Joao", 15, "1A");
-    Professor professor1("Maria");
 
-    professor1.darNota(aluno1, 9.5);
+    // O construtor só funciona de maneira "geral" para o código quando está fora de um {}.
+    // Caso contrário, o destrutor será imediatamente chamado, destruindo aquela classe.
+    Pessoa pessoa1("Joao", 30);
+    Aluno aluno1("Pedro", 30, 2504, 9.0);
 
-    cout << "A nota do aluno " << aluno1.getNome() << " e: " << aluno1.getNota() << endl;
+    cout << aluno1.getNome() << " tem " << aluno1.getIdade() << "anos, portador da matricula ";
+
+
 
     return 0;
 }
