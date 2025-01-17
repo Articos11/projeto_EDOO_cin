@@ -3,31 +3,39 @@
 #include <vector>
 #include "pessoa.h"
 #include "aluno.h"
+#include "professor.h"
 using namespace std;
 
+// Função para dar as notas aos alunos.
+void darNotas(Professor &professor, double nota, Aluno &aluno) {
+    professor.darNota(aluno, nota);
+}
 
 int main() {
-    double Nota;
-    // O construtor só funciona de maneira "geral" para o código quando está fora de um {}.
-    // Caso contrário, o destrutor será imediatamente chamado, destruindo aquela classe.
-    Pessoa pessoa1("Joao", 30);
-    Aluno aluno1("Pedro", 30, 2504);
+    double notaAtividade;
+    // Criando um objeto da classe Aluno
+    Aluno aluno1("Joao da Silva", 20, "Ciencia da computacao");
+    Professor professor1("Chico", 40, "Professor Auxiliar", "Doutor em visão computacional");
 
-    cout << aluno1.getNome() << " tem " << aluno1.getIdade() << " anos, portador da matricula " << aluno1.getMatricula() << endl;
+    // Imprimindo os dados do aluno
+    cout << "Matricula: " << aluno1.getMatricula() << endl;
+    cout << "Curso: " << aluno1.getCurso() << endl;
+    cout << "Nome: " << aluno1.getNome() << endl;
+    cout << "Idade: " << aluno1.getIdade() << endl;
 
-    // Aqui adicionamos as notas.
+
     for (int i = 0; i < 4; i++) {
-        cout << "Adicione a nota " << i + 1 << " do aluno:";
-        cin >> Nota;
-        aluno1.adicionarNota(Nota);
+        cin >> notaAtividade;
+        darNotas(professor1, notaAtividade, aluno1);
     }
 
+    // Depois temos que jogar isso numa função pra "limpar" o código.
     vector<double> notas = aluno1.getNotas();
+
     for (double nota : notas) {
         cout << nota << " ";
     }
-
-    cout << aluno1.calculaMedia();
+    cout << "Media do aluno: " << aluno1.calculaMedia();
 
     return 0;
 }

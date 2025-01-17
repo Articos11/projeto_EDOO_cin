@@ -21,8 +21,6 @@ public:
         string getNome() const {return nome;}
         int getIdade() const {return idade;}
 
-
-
 };
 
 #endif //PROJETOEDO_PESSOA_H
