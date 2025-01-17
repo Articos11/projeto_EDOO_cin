@@ -22,8 +22,6 @@ public:
         setMatricula();
     }
 
-    
-
     int setMatricula(){
         time(&sec);   // Gerar tempo "aleatório" para não repetir a mesma semente 
         srand((unsigned) sec); // Inicializa o gerador de números aleatórios  com uma semente diferente no rand
@@ -37,7 +35,7 @@ public:
 
     int getMatricula() const {return matricula;}
 
-    
+
     // Calculo da média do aluno.
     double calculaMedia() {
         if (notas.size() < 4) {
