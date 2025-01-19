@@ -9,7 +9,7 @@
 
 class Turma {
 private:
-    string disciplina;
+    string nomeDisciplina;
     int capacidade;
     int matriculados;
     // Aqui trabalhamos com ponteiros.
@@ -20,8 +20,22 @@ private:
     set<int> matriculas;
 public:
     Turma(const string& novaDisciplina, int novaCapacidade)
-    : disciplina(novaDisciplina), capacidade(novaCapacidade), matriculados(0){}
+    : nomeDisciplina(novaDisciplina), capacidade(novaCapacidade), matriculados(0){}
 
+    // Destrutor
+    ~Turma() {
+        // Liberar a memória alocada para os alunos
+        for (Aluno* aluno : alunos) {
+            delete aluno;
+        }
+        alunos.clear(); // Limpar o vetor para evitar ponteiros pendentes
+
+        // Liberar a memória alocada para o professor (se necessário)
+        if (professor != nullptr) {
+            delete professor;
+        }
+        cout << "Destrutor chamado" << endl;
+    }
 
     void matricularAluno(Aluno* aluno){
         // Ponteiros é loucura, mas vou tentar explicar o que tá acontecendo aqui. Com a ajuda de um set, garantimos que
@@ -41,12 +55,15 @@ public:
 
     void setProfessor(Professor* novoProfessor) {
         professor = novoProfessor;
-        cout << "O professor: " << professor->getNome() << "Esta responsavel pela disciplina de " << disciplina << endl;
+        cout << "O professor: " << professor->getNome() << "Esta responsavel pela disciplina de " << nomeDisciplina << endl;
     }
 
-    string getTurma() const {return disciplina;}
+    string getTurma() const {return nomeDisciplina;}
     int getCapacidade() const {return capacidade;}
+    int getMatriculados() const{return matriculados;}
     // Não sei por que isso aqui não funciona -> string getProfessor() const {return professor;}
 };
+
+
 
 #endif //PROJETOEDO_TURMA_H

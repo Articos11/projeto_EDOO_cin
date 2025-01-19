@@ -8,7 +8,7 @@ using namespace std;
 #ifndef PROJETOEDO_ALUNO_H
 #define PROJETOEDO_ALUNO_H
 
-long long sec;
+ long sec;
 
 
 class Aluno : public Pessoa {
@@ -61,6 +61,8 @@ public:
     int getMatricula() const {return matricula;}
     string getCurso() const {return curso;}
     vector<double> getNotas() const {return notas;}
+    static set<int> getMatriculasgeradas() {return matriculasGeradas;}
+
 };
 set<int> Aluno::matriculasGeradas; //Ele serve como um registro de todas as matrículas já atribuídas a alunos, garantindo que cada aluno tenha uma matrícula única.
 #endif //PROJETOEDO_ALUNO_H

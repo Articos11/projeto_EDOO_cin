@@ -20,7 +20,6 @@ public:
     void darNota(Aluno &aluno, double nota){
         aluno.setNota(nota);
     }
-
 };
 
 #endif //PROJETOEDO_PROFESSOR_H
