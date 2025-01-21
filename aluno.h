@@ -8,7 +8,7 @@ using namespace std;
 #ifndef PROJETOEDO_ALUNO_H
 #define PROJETOEDO_ALUNO_H
 
- long sec;
+long sec;
 
 
 class Aluno : public Pessoa {
@@ -23,9 +23,13 @@ public:
         setMatricula();
     }
 
+    ~Aluno(){
+        cout << "Notas no sistema! Boas férias.";
+    }
+
     // Gera uma matricula aleatoria para cada aluno no momento que ele e cadastrado.
     void setMatricula(){
-        time(&sec);   // Gerar tempo "aleatório" para não repetir a mesma semente
+        time(reinterpret_cast<time_t *>(&sec));   // Gerar tempo "aleatório" para não repetir a mesma semente
         srand((unsigned) sec); // Inicializa o gerador de números aleatórios  com uma semente diferente no rand
         int novaMatricula;
         do{

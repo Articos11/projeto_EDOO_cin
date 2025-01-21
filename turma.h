@@ -20,21 +20,11 @@ private:
     set<int> matriculas;
 public:
     Turma(const string& novaDisciplina, int novaCapacidade)
-    : nomeDisciplina(novaDisciplina), capacidade(novaCapacidade), matriculados(0){}
+            : nomeDisciplina(novaDisciplina), capacidade(novaCapacidade), matriculados(0){}
 
     // Destrutor
     ~Turma() {
-        // Liberar a memória alocada para os alunos
-        for (Aluno* aluno : alunos) {
-            delete aluno;
-        }
-        alunos.clear(); // Limpar o vetor para evitar ponteiros pendentes
-
-        // Liberar a memória alocada para o professor (se necessário)
-        if (professor != nullptr) {
-            delete professor;
-        }
-        cout << "Destrutor chamado" << endl;
+        cout << "Turma liberada! Boas férias.";
     }
 
     void matricularAluno(Aluno* aluno){
