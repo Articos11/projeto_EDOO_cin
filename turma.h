@@ -33,7 +33,7 @@ public:
         // matriculas.find() é utilizado para procurar dentro do set o seguinte dado:
         // aluno->getMatricula(), ou seja, estamos procurando o valor da matricula do aluno, caso não ache nada, ele retornará um
         // resultado vazio, ou seja, o .end(). Não sei se deu pra explicar, mas tá ai.
-        if (matriculados < capacidade && matriculas.find(aluno->getMatricula()) == matriculas.end()) {
+        if (matriculados < capacidade && matriculas.find(aluno->getMatricula()) == matriculas.end()) {  // matriculas.end certifica de que percorreu todo o meu set e não encontrou essa matricula
             alunos.push_back(aluno);
             matriculas.insert(aluno->getMatricula());
             matriculados++;
