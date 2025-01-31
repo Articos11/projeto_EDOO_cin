@@ -1,3 +1,4 @@
+
 #include <string>
 using namespace std;
 
@@ -15,11 +16,11 @@ private:
     int idade;
 public:
     Pessoa(const string& novoNome = "", int novaIdade = 0)
-        : nome(novoNome), idade(novaIdade) {}
+            : nome(novoNome), idade(novaIdade) {}
 
-        //
-        string getNome() const {return nome;}
-        int getIdade() const {return idade;}
+    //
+    string getNome() const {return nome;}
+    int getIdade() const {return idade;}
 
 };
 
