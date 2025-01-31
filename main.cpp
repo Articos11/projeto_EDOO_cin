@@ -5,6 +5,7 @@
 #include "aluno.h"
 #include "professor.h"
 #include "turma.h"
+#include "bancoDeDados.h"
 using namespace std;
 
 // Função para dar as notas aos alunos.
@@ -20,6 +21,8 @@ int main() {
     Aluno aluno22("Joao da LUZ", 20, "Ciencia da computacao");
     Professor professor1("Chico", 40, "Professor Auxiliar", "Doutor em visão computacional");
     Turma turmaIP("Introducao a programacao", 20);
+    BancoDeDados* banco = BancoDeDados::obterInstancia();
+   
 
     cout << "Bem-Vindo a turma de: " << turmaIP.getTurma() << endl;
     cout << "Aluno : " << aluno1.getNome() << ", Portador da matricula " << aluno1.getMatricula() << ", Possui " << aluno1.getIdade()
@@ -33,7 +36,8 @@ int main() {
     // Caso tentemos matricular o mesmo aluno duas vezes, isso não acontecerá.
     turmaIP.matricularAluno(&aluno1);
     turmaIP.matricularAluno(&aluno22);
-
+    banco->adicionarTurma(&turmaIP);
+    banco->listarTurmas();
 
 // Função para adicionar a nota do professor
     cout << "Professor, coloque a nota dos alunos: "<< endl;
