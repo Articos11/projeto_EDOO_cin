@@ -18,6 +18,7 @@ private:
     vector<Aluno*> alunos;
     Professor* professor;
     set<int> matriculas;
+    static set<Professor*> professores_list;//garante que minha lista vai ter todos os professores já gerados pela minha classe turma 
 public:
     Turma(const string& novaDisciplina, int novaCapacidade)
             : nomeDisciplina(novaDisciplina), capacidade(novaCapacidade), matriculados(0){}
@@ -44,9 +45,15 @@ public:
     }
 
     void setProfessor(Professor* novoProfessor) {
+    if (professores_list.count(novoProfessor) == 0) { // Verifica se o professor já está na lista
         professor = novoProfessor;
-        cout << "O professor: " << professor->getNome() << "Esta responsavel pela disciplina de " << nomeDisciplina << endl;
+        professores_list.insert(novoProfessor);
+        cout << "O professor: " << professor->getNome() << " está responsável pela disciplina de " << nomeDisciplina << endl;
+    } else {
+        cout << "O professor " << novoProfessor->getNome() << " já está atribuído a uma turma." << endl;
     }
+
+}
 
     string getTurma() const {return nomeDisciplina;}
     int getCapacidade() const {return capacidade;}
